@@ -7,23 +7,23 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import com.example.kotlinbasics.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import org.w3c.dom.Text
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     val ctx : Context = this
-    lateinit var rollButton : Button
-    lateinit var dice_image : ImageView
+    lateinit var dataBinding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
+        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        rollButton = findViewById(R.id.roll_button)
-        dice_image = findViewById(R.id.dice_image);
 
-        rollButton.setOnClickListener {
+        dataBinding.rollButton.setOnClickListener {
             diceRoll()
         }
     }
@@ -42,6 +42,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        dice_image.setImageResource(drawableRes)
+        dataBinding.diceImage.setImageResource(drawableRes)
         }
 }
